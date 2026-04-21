@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Struktur Organisasi DKM Nurul Huda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Scheherazade+New:wght@400;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b1220;
+  --bg2: #111827;
+  --bg3: #1a2540;
+  --surface: #162035;
+  --surface2: #1e2d4a;
+  --border: rgba(99,179,237,0.12);
+  --border2: rgba(99,179,237,0.22);
+
+  --gold: #f6c34a;
+  --gold2: #e8a820;
+  --gold3: #fde68a;
+  --gold-dim: rgba(246,195,74,0.15);
+  --gold-glow: rgba(246,195,74,0.25);
+
+  --teal: #38d9b2;
+  --teal2: #22c9a0;
+  --teal-dim: rgba(56,217,178,0.12);
+
+  --blue: #60a5fa;
+  --blue-dim: rgba(96,165,250,0.12);
+
+  --purple: #a78bfa;
+  --purple-dim: rgba(167,139,250,0.12);
+
+  --rose: #f87171;
+  --rose-dim: rgba(248,113,113,0.12);
+
+  --text: #e8f0fe;
+  --text2: #94a3b8;
+  --text3: #64748b;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-gold: 0 0 24px rgba(246,195,74,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ─── NOISE TEXTURE ─── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.6;
+}
+
+/* ─── MESH GRADIENT BG ─── */
+.mesh-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(246,195,74,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 10%, rgba(56,217,178,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(96,165,250,0.05) 0%, transparent 60%);
+}
+
+/* ─── GRID DOTS ─── */
+.grid-dots {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(circle, rgba(99,179,237,0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ─── WRAPPER ─── */
+.page {
+  position: relative; z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+/* ─── TOPBAR ─── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+.topbar-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-icon {
+  width: 36px; height: 36px;
+  background: var(--gold-dim);
+  border: 1px solid rgba(246,195,74,0.3);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.logo-text {
+  font-size: 13px; font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+.logo-text span { color: var(--gold); }
+.logo-sub {
+  font-size: 10px; color: var(--text3);
+  font-weight: 400; letter-spacing: 0.5px;
+}
+.topbar-badge {
+  background: var(--gold-dim);
+  border: 1px solid rgba(246,195,74,0.3);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 11px; font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ─── HERO ─── */
+.hero {
+  text-align: center;
+  padding: 60px 20px 50px;
+  position: relative;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--teal-dim);
+  border: 1px solid rgba(56,217,178,0.25);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 11px; font-weight: 600;
+  color: var(--teal);
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 22px;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-eyebrow::before { content: '🕌'; font-size: 13px; }
+
+.hero-arabic {
+  font-family: 'Scheherazade New', serif;
+  font-size: clamp(28px, 7vw, 56px);
+  color: var(--gold);
+  line-height: 1.4;
+  margin-bottom: 16px;
+  text-shadow: 0 0 40px rgba(246,195,74,0.3);
+  animation: fadeUp 0.6s 0.1s ease both;
+  opacity: 0;
+}
+
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(26px, 5vw, 44px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 12px;
+  animation: fadeUp 0.6s 0.2s ease both;
+  opacity: 0;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 14px; color: var(--text2);
+  font-weight: 400; letter-spacing: 0.3px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s 0.3s ease both;
+  opacity: 0;
+}
+.hero-sub strong { color: var(--teal); font-weight: 600; }
+
+.hero-divider {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s 0.4s ease both;
+  opacity: 0;
+}
+.hero-divider .line { height: 1px; width: 60px; background: linear-gradient(90deg, transparent, var(--gold3), transparent); }
+.hero-divider .gem {
+  width: 7px; height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 12px var(--gold2);
+}
+
+.periode-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--gold-dim), rgba(246,195,74,0.08));
+  border: 1px solid rgba(246,195,74,0.35);
+  border-radius: 28px;
+  padding: 8px 24px;
+  font-size: 13px; font-weight: 700;
+  color: var(--gold3);
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 20px rgba(246,195,74,0.12);
+  animation: fadeUp 0.6s 0.5s ease both;
+  opacity: 0;
+}
+.periode-pill::before { content: '📅'; font-size: 14px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTION LABEL ─── */
+.section-label {
+  display: flex; align-items: center; gap: 12px;
+  margin: 40px 0 24px;
+}
+.section-label .label-text {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--text3);
+  white-space: nowrap;
+}
+.section-label .label-line {
+  flex: 1; height: 1px;
+  background: var(--border);
+}
+
+/* ─── ORG FLOW ─── */
+.org-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* CONNECTOR */
+.connector {
+  width: 2px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--gold), rgba(246,195,74,0.15));
+  margin: 0 auto;
+  flex-shrink: 0;
+  position: relative;
+}
+.connector::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; left: 50%;
+  transform: translateX(-50%);
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--gold2);
+}
+.connector-teal {
+  background: linear-gradient(to bottom, var(--teal2), rgba(56,217,178,0.15));
+}
+.connector-teal::after { background: var(--teal2); box-shadow: 0 0 8px var(--teal); }
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 28px;
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: ''; position: absolute;
+  inset: 0; border-radius: inherit;
+  opacity: 0; transition: opacity 0.3s;
+  background: radial-gradient(ellipse at 50% 0%, rgba(246,195,74,0.06), transparent 70%);
+}
+.card:hover { transform: translateY(-3px); }
+.card:hover::before { opacity: 1; }
+
+.card-role {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+.card-name {
+  font-size: 16px; font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+/* KETUA */
+.card-ketua {
+  border-color: rgba(246,195,74,0.4);
+  background: linear-gradient(145deg, #1d2b44, #162035);
+  box-shadow: 0 0 0 1px rgba(246,195,74,0.15), var(--shadow), var(--shadow-gold);
+  min-width: 220px;
+  padding: 20px 36px;
+}
+.card-ketua::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold2), var(--gold3), var(--gold2), transparent);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.card-ketua .card-role { color: var(--gold); }
+.card-ketua .card-name { font-size: 20px; color: var(--gold3); font-family: 'DM Serif Display', serif; }
+.card-ketua .crown {
+  position: absolute; top: -14px; left: 50%;
+  transform: translateX(-50%);
+  width: 28px; height: 28px;
+  background: var(--gold2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 0 16px rgba(246,195,74,0.5);
+  border: 2px solid var(--bg);
+}
+
+/* PELINDUNG */
+.card-pelindung {
+  border-color: rgba(56,217,178,0.35);
+  background: linear-gradient(145deg, #152a28, #0f2020);
+  box-shadow: 0 0 0 1px rgba(56,217,178,0.1), var(--shadow);
+  min-width: 200px;
+}
+.card-pelindung::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal2), transparent);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.card-pelindung .card-role { color: var(--teal); }
+.card-pelindung .card-name { color: #7fffd4; font-size: 15px; }
+
+/* SEKRETARIS & BENDAHARA HORIZONTAL */
+.staff-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 700px;
+  gap: 0;
+  position: relative;
+}
+.staff-row .h-bar {
+  height: 2px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(246,195,74,0.05), var(--gold), rgba(246,195,74,0.05));
+  max-width: 80px;
+}
+.card-staff {
+  background: linear-gradient(145deg, #1c2a40, #162035);
+  border-color: rgba(246,195,74,0.25);
+  min-width: 170px;
+  flex-shrink: 0;
+}
+.card-staff .card-role { color: var(--gold2); }
+.card-staff .card-name { font-size: 14px; }
+
+/* SEKSI */
+.card-seksi {
+  border-color: rgba(56,217,178,0.3);
+  background: linear-gradient(145deg, #152a28, #0f2020);
+  min-width: 210px;
+}
+.card-seksi::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.card-seksi .card-role { color: var(--teal2); }
+.card-seksi .card-name { color: #7fffd4; font-size: 15px; }
+
+/* ─── BIDANG GRID ─── */
+.bidang-section {
+  width: 100%;
+  animation: fadeUp 0.6s 0.6s ease both;
+  opacity: 0;
+}
+.bidang-header {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.bidang-header::before,
+.bidang-header::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56,217,178,0.3));
+}
+.bidang-header::after {
+  background: linear-gradient(90deg, rgba(56,217,178,0.3), transparent);
+}
+.bidang-label {
+  font-size: 11px; font-weight: 700;
+  color: var(--teal2); letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border: 1px solid rgba(56,217,178,0.2);
+  border-radius: 20px;
+  background: var(--teal-dim);
+  white-space: nowrap;
+}
+
+.bidang-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* BIDANG CARD */
+.bid-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+  animation: fadeUp 0.5s ease both;
+  opacity: 0;
+}
+.bid-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+.bid-card-header {
+  padding: 14px 16px 12px;
+  position: relative;
+}
+.bid-card-header::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 16px; right: 16px; height: 1px;
+  background: var(--border);
+}
+
+.bid-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; margin-bottom: 10px;
+}
+.bid-role {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  margin-bottom: 3px;
+}
+.bid-name {
+  font-size: 14px; font-weight: 700;
+  color: var(--text);
+}
+
+.bid-card-body {
+  padding: 12px 16px 14px;
+}
+.anggota-title {
+  font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--text3);
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.anggota-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.anggota-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.anggota-list li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--text2);
+  font-weight: 500;
+}
+.anggota-list li::before {
+  content: '';
+  width: 5px; height: 5px; border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* COLOR VARIANTS */
+.variant-gold .bid-card-header { background: linear-gradient(135deg, #1d2b44, #162035); }
+.variant-gold .bid-card-header::after { background: rgba(246,195,74,0.12); }
+.variant-gold .bid-icon { background: var(--gold-dim); border: 1px solid rgba(246,195,74,0.2); }
+.variant-gold .bid-role { color: var(--gold2); }
+.variant-gold .bid-card { border-color: rgba(246,195,74,0.2); }
+.variant-gold .anggota-list li::before { background: var(--gold); }
+
+.variant-teal .bid-card-header { background: linear-gradient(135deg, #152a28, #0f2020); }
+.variant-teal .bid-card-header::after { background: rgba(56,217,178,0.12); }
+.variant-teal .bid-icon { background: var(--teal-dim); border: 1px solid rgba(56,217,178,0.2); }
+.variant-teal .bid-role { color: var(--teal2); }
+.variant-teal .bid-card { border-color: rgba(56,217,178,0.2); }
+.variant-teal .anggota-list li::before { background: var(--teal2); }
+
+.variant-blue .bid-card-header { background: linear-gradient(135deg, #152038, #0f1830); }
+.variant-blue .bid-card-header::after { background: rgba(96,165,250,0.12); }
+.variant-blue .bid-icon { background: var(--blue-dim); border: 1px solid rgba(96,165,250,0.2); }
+.variant-blue .bid-role { color: var(--blue); }
+.variant-blue .bid-card { border-color: rgba(96,165,250,0.2); }
+.variant-blue .anggota-list li::before { background: var(--blue); }
+
+.variant-purple .bid-card-header { background: linear-gradient(135deg, #1e1838, #170f30); }
+.variant-purple .bid-card-header::after { background: rgba(167,139,250,0.12); }
+.variant-purple .bid-icon { background: var(--purple-dim); border: 1px solid rgba(167,139,250,0.2); }
+.variant-purple .bid-role { color: var(--purple); }
+.variant-purple .bid-card { border-color: rgba(167,139,250,0.2); }
+.variant-purple .anggota-list li::before { background: var(--purple); }
+
+.variant-rose .bid-card-header { background: linear-gradient(135deg, #2a1520, #200f18); }
+.variant-rose .bid-card-header::after { background: rgba(248,113,113,0.12); }
+.variant-rose .bid-icon { background: var(--rose-dim); border: 1px solid rgba(248,113,113,0.2); }
+.variant-rose .bid-role { color: var(--rose); }
+.variant-rose .bid-card { border-color: rgba(248,113,113,0.2); }
+.variant-rose .anggota-list li::before { background: var(--rose); }
+
+/* WIDE CONNECTOR AREA */
+.tree-connector {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  margin: 0 auto;
+  height: 40px;
+}
+.tree-connector::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; right: auto;
+  width: 2px; height: 100%;
+  background: linear-gradient(to bottom, var(--teal2), rgba(56,217,178,0.1));
+}
+
+/* BRANCH LINE */
+.branch-line {
+  width: 100%;
+  max-width: 900px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 5%, rgba(56,217,178,0.35) 20%, rgba(56,217,178,0.35) 80%, transparent 95%);
+  margin: 0 auto;
+  position: relative;
+}
+.branch-line::before, .branch-line::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 8px; height: 8px;
+  background: var(--teal2);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--teal);
+}
+.branch-line::before { left: 5%; }
+.branch-line::after  { right: 5%; }
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+  animation: fadeUp 0.6s 0.8s ease both;
+  opacity: 0;
+}
+.stat-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  text-align: center;
+}
+.stat-num {
+  font-size: 28px; font-weight: 800;
+  font-family: 'DM Serif Display', serif;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--text3);
+}
+.stat-item.s-gold .stat-num { color: var(--gold); }
+.stat-item.s-teal .stat-num { color: var(--teal); }
+.stat-item.s-blue .stat-num { color: var(--blue); }
+.stat-item.s-purple .stat-num { color: var(--purple); }
+
+/* ─── FOOTER ─── */
+.footer {
+  margin-top: 60px;
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
+  text-align: center;
+}
+.footer-arabic {
+  font-family: 'Scheherazade New', serif;
+  font-size: 22px;
+  color: var(--gold);
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+.footer-text {
+  font-size: 11px; color: var(--text3);
+  letter-spacing: 1.5px;
+  text-transform: uppercase; font-weight: 500;
+}
+.footer-dot { margin: 0 8px; opacity: 0.4; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .bidang-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card-ketua { min-width: 180px; }
+  .card-staff { min-width: 140px; }
+  .staff-row .h-bar { max-width: 40px; }
+  .topbar-badge { display: none; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 0 14px 60px; }
+  .bidang-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card-ketua { padding: 16px 20px; }
+  .hero { padding: 40px 0 36px; }
+  .hero-title { font-size: 22px; }
+  .staff-row .h-bar { max-width: 20px; }
+  .card-name { font-size: 13px; }
+  .bid-name { font-size: 12px; }
+}
+
+/* ─── ANIMATE BID CARDS ─── */
+.bid-card:nth-child(1) { animation-delay: 0.7s; }
+.bid-card:nth-child(2) { animation-delay: 0.8s; }
+.bid-card:nth-child(3) { animation-delay: 0.9s; }
+.bid-card:nth-child(4) { animation-delay: 1.0s; }
+.bid-card:nth-child(5) { animation-delay: 1.1s; }
+.bid-card:nth-child(6) { animation-delay: 1.2s; }
+
+/* PULSE RING ON KETUA */
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0   rgba(246,195,74,0.4), var(--shadow-gold); }
+  70%  { box-shadow: 0 0 0 14px rgba(246,195,74,0),   var(--shadow-gold); }
+  100% { box-shadow: 0 0 0 0   rgba(246,195,74,0),   var(--shadow-gold); }
+}
+.card-ketua { animation: pulseRing 3s 1.5s ease infinite; }
+</style>
+</head>
+<body>
+<div class="mesh-bg"></div>
+<div class="grid-dots"></div>
+
+<div class="page">
+
+  <!-- TOPBAR -->
+  <nav class="topbar">
+    <div class="topbar-logo">
+      <div class="logo-icon">🕌</div>
+      <div>
+        <div class="logo-text">DKM <span>Nurul Huda</span></div>
+        <div class="logo-sub">Dusun Sindanggalih · Desa Rasadatu</div>
+      </div>
+    </div>
+    <div class="topbar-badge">Periode 2024–2029</div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Dewan Kemakmuran Masjid</div>
+    <div class="hero-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+    <h1 class="hero-title">Struktur Organisasi<br><em>DKM Nurul Huda</em></h1>
+    <p class="hero-sub">
+      Kec. Cineam, Tasikmalaya &nbsp;·&nbsp;
+      <strong>Periode 2024 – 2029</strong>
+    </p>
+    <div class="hero-divider">
+      <div class="line"></div><div class="gem"></div>
+      <div class="line" style="width:24px"></div>
+      <div class="gem"></div><div class="line"></div>
+    </div>
+    <div class="periode-pill">Masa Kepengurusan 2024 s/d 2029</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item s-gold">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Bidang</div>
+    </div>
+    <div class="stat-item s-teal">
+      <div class="stat-num">18</div>
+      <div class="stat-label">Anggota</div>
+    </div>
+    <div class="stat-item s-blue">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Pengurus Inti</div>
+    </div>
+    <div class="stat-item s-purple">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Tahun Periode</div>
+    </div>
+  </div>
+
+  <!-- ORG FLOW -->
+  <div class="section-label">
+    <span class="label-text">Struktur Kepemimpinan</span>
+    <div class="label-line"></div>
+  </div>
+
+  <div class="org-flow">
+
+    <!-- KETUA -->
+    <div class="card card-ketua" style="animation: fadeUp 0.6s 0.2s ease both; opacity: 0;">
+      <div class="crown">👑</div>
+      <div class="card-role">Ketua DKM</div>
+      <div class="card-name">E. Kosasih</div>
+    </div>
+
+    <div class="connector" style="height:40px;"></div>
+
+    <!-- PELINDUNG -->
+    <div class="card card-pelindung" style="animation: fadeUp 0.6s 0.3s ease both; opacity: 0;">
+      <div class="card-role">Pelindung</div>
+      <div class="card-name">Kepala Dusun</div>
+    </div>
+
+    <div class="connector connector-teal" style="height:40px;"></div>
+
+    <!-- SEKRETARIS + BENDAHARA -->
+    <div class="staff-row" style="animation: fadeUp 0.6s 0.4s ease both; opacity: 0;">
+      <div class="card card-staff">
+        <div class="card-role">✏️ Sekretaris</div>
+        <div class="card-name">Pria Natakusumah</div>
+      </div>
+      <div class="h-bar"></div>
+      <div style="width:2px;height:56px;background:linear-gradient(to bottom,var(--gold),rgba(246,195,74,0.1));flex-shrink:0;"></div>
+      <div class="h-bar"></div>
+      <div class="card card-staff">
+        <div class="card-role">💰 Bendahara</div>
+        <div class="card-name">Wiwin</div>
+      </div>
+    </div>
+
+    <div class="connector connector-teal" style="height:40px;"></div>
+
+    <!-- SEKSI-SEKSI -->
+    <div class="card card-seksi" style="animation: fadeUp 0.6s 0.5s ease both; opacity: 0;">
+      <div class="card-role">Koordinasi</div>
+      <div class="card-name">Seksi – Seksi</div>
+    </div>
+
+    <!-- TREE TO BIDANG -->
+    <div class="tree-connector"></div>
+    <div class="branch-line" style="max-width:860px;"></div>
+    <div style="height:8px;"></div>
+
+  </div>
+
+  <!-- BIDANG SECTION -->
+  <div class="section-label" style="margin-top: 8px;">
+    <span class="label-text">Bidang & Anggota</span>
+    <div class="label-line"></div>
+  </div>
+
+  <div class="bidang-section">
+
+    <div class="bidang-grid">
+
+      <!-- DA'WAH -->
+      <div class="bid-card variant-gold">
+        <div class="bid-card-header">
+          <div class="bid-icon">📖</div>
+          <div class="bid-role">Bid. Da'wah</div>
+          <div class="bid-name">Ust. Jaja H</div>
+        </div>
+        <div class="bid-card-body">
+          <div class="anggota-title">Anggota</div>
+          <ul class="anggota-list">
+            <li>Ajid R</li>
+            <li>Yana</li>
+            <li>Ade Aif</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SOSIAL -->
+      <div class="bid-card variant-teal">
+        <div class="bid-card-header">
+          <div class="bid-icon">🤝</div>
+          <div class="bid-role">Bid. Sosial</div>
+          <div class="bid-name">Mamat B</div>
+        </div>
+        <div class="bid-card-body">
+          <div class="anggota-title">Anggota</div>
+          <ul class="anggota-list">
+            <li>Iwan</li>
+            <li>Opa M</li>
+            <li>Apud</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PENDIDIKAN -->
+      <div class="bid-card variant-blue">
+        <div class="bid-card-header">
+          <div class="bid-icon">🎓</div>
+          <div class="bid-role">Bid. Pendidikan</div>
+          <div class="bid-name">Ust. Yusuf</div>
+        </div>
+        <div class="bid-card-body">
+          <div class="anggota-title">Anggota</div>
+          <ul class="anggota-list">
+            <li>Deden Hz</li>
+            <li>Dede Mumu</li>
+            <li>A. Komara</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MUSLIMAH -->
+      <div class="bid-card variant-purple">
+        <div class="bid-card-header">
+          <div class="bid-icon">🌸</div>
+          <div class="bid-role">Bid. Muslimah</div>
+          <div class="bid-name">Mamah</div>
+        </div>
+        <div class="bid-card-body">
+          <div class="anggota-title">Anggota</div>
+          <ul class="anggota-list">
+            <li>Teni M</li>
+            <li>Ida</li>
+            <li>Idah</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- HUMAS -->
+      <div class="bid-card variant-rose">
+        <div class="bid-card-header">
+          <div class="bid-icon">📢</div>
+          <div class="bid-role">Bid. Humas</div>
+          <div class="bid-name">Diat KJ</div>
+        </div>
+        <div class="bid-card-body">
+          <div class="anggota-title">Anggota</div>
+          <ul class="anggota-list">
+            <li>Apif M</li>
+            <li>Dede D</li>
+            <li>Andi J</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- KERUMAH TANGGAAN -->
+      <div class="bid-card variant-teal">
+        <div class="bid-card-header">
+          <div class="bid-icon">🏠</div>
+          <div class="bid-role">Bid. Rumah Tangga</div>
+          <div class="bid-name">Ikun</div>
+        </div>
+        <div class="bid-card-body">
+          <div class="anggota-title">Anggota</div>
+          <ul class="anggota-list">
+            <li>Enceng K</li>
+            <li>Nanan H</li>
+            <li>Hamid</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-arabic">وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا</div>
+    <div class="footer-text">
+      DKM Nurul Huda
+      <span class="footer-dot">•</span>
+      Dusun Sindanggalih
+      <span class="footer-dot">•</span>
+      Desa Rasadatu
+      <span class="footer-dot">•</span>
+      Kec. Cineam, Tasikmalaya
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
